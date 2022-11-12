@@ -1,0 +1,39 @@
+﻿<Window
+    x:Class="DoAn1_WPF.UserControlBar.AccountDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:DoAn1_WPF.UserControlBar"
+             mc:Ignorable="d" 
+             
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             Name="Dialog"
+    WindowStyle="None"
+             DataContext="{StaticResource NguoiDungVM}"
+    WindowStartupLocation="CenterScreen"
+        Height="150" Width="300">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <TextBox Text="{Binding ChangePassword, UpdateSourceTrigger=PropertyChanged}" materialDesign:HintAssist.Hint="Mật khẩu mới" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" Width="250"/>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <Button Command="{Binding SubmitCommand}" CommandParameter="{Binding ElementName=Dialog}" Style="{StaticResource MaterialDesignRaisedAccentButton}" Width="100" HorizontalAlignment="Right" Margin="5 5 15 5" Content="Xác nhận"/>
+            </Grid>
+            <Grid Grid.Column="1">
+                <Button Command="{Binding CancelCommand}" CommandParameter="{Binding ElementName=Dialog}" Style="{StaticResource MaterialDesignRaisedDarkButton}" Width="100" HorizontalAlignment="Left" Margin="15 5 5 5" Content="Hủy" />
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

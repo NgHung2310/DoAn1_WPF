@@ -38,10 +38,8 @@
                     </Button>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" DockPanel.Dock="Left">
-                    <ToggleButton Style="{DynamicResource MaterialDesignHamburgerToggleButton}" />
-                    <TextBlock VerticalAlignment="Center" Margin="16 0 0 0" Text="{Binding Tag, ElementName=ucControlBar}">
-                        Title
-                    </TextBlock>
+                    <ToggleButton  Style="{DynamicResource MaterialDesignHamburgerToggleButton}" />
+                    <TextBlock VerticalAlignment="Center" Margin="16 0 0 0" Text="{Binding Tag, ElementName=ucControlBar}"></TextBlock>
                 </StackPanel>
             </DockPanel>
         </materialDesign:ColorZone>

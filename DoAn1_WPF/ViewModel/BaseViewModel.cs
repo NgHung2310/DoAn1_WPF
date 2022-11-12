@@ -18,7 +18,7 @@ namespace DoAn1_WPF.ViewModel
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
-    class RelayCommand<T> : ICommand
+    class RelayCommand<T> : ICommand 
     {
         private readonly Predicate<T> _canExecute;
         private readonly Action<T> _execute;

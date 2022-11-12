@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DoAn1_WPF"
         mc:Ignorable="d"
-        Title="DanhMucHang" Height="450" Width="800"
+        Title="Danh mục hàng" Height="450" Width="800"
         
         x:Name="window"
         xmlns:uc="clr-namespace:DoAn1_WPF.UserControlBar"
@@ -49,11 +49,13 @@
                     <Button Command="{Binding AddCommand}" Content="Thêm" Margin="5" Width="100"></Button>
                     <Button Command="{Binding EditCommand}" Content="Sửa" Margin="5" Width="100"></Button>
                     <Button Command="{Binding DeleteCommand}" Content="Xóa" Margin="5" Width="100"></Button>
+                    <Button Command="{Binding FindCommand}" Content="Tìm kiếm" Margin="200 5 5 5" Width="100"></Button>
+                    <Button Command="{Binding BackCommand}" Content="Quay lại" Margin="5" Width="100"></Button>
                 </WrapPanel>
             </materialDesign:Card>
             <materialDesign:Card Grid.Row="2" Margin="5" VerticalAlignment="Stretch">
                 <ScrollViewer VerticalScrollBarVisibility="Auto">
-                    <ListView ItemsSource="{Binding List}" SelectedItem="{Binding SelectedItem, Mode=OneWayToSource}">
+                    <ListView ItemsSource="{Binding List,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedItem, Mode=OneWayToSource}">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header="Mã loại hàng" DisplayMemberBinding="{Binding MaLoaiHang}"></GridViewColumn>

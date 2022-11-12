@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="bfc3406802cf47118a6b1175c5053ca2" Name="Diagram1">
+        <EntityTypeShape EntityType="DoAn1_WPFModel.DANHMUCHANG" Width="1.5" PointX="2.875" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DoAn1_WPFModel.HANGHOA" Width="1.5" PointX="5" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DoAn1_WPFModel.KHACHHANG" Width="1.5" PointX="8.125" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DoAn1_WPFModel.KHOHANG" Width="1.5" PointX="5" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="DoAn1_WPFModel.NHACUNGCAP" Width="1.5" PointX="2" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DoAn1_WPFModel.PHANQUYEN" Width="1.5" PointX="10" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DoAn1_WPFModel.PHIEUNHAP" Width="1.5" PointX="2" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DoAn1_WPFModel.PHIEUXUAT" Width="1.5" PointX="8.25" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DoAn1_WPFModel.TAIKHOAN" Width="1.5" PointX="8" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DoAn1_WPFModel.TTPHIEUNHAP" Width="1.5" PointX="4" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DoAn1_WPFModel.TTPHIEUXUAT" Width="1.5" PointX="6" PointY="4.375" IsExpanded="true" />
+        <AssociationConnector Association="DoAn1_WPFModel.FK__HANGHOA__MALOAIH__3C69FB99" ManuallyRouted="false" />
+        <AssociationConnector Association="DoAn1_WPFModel.FK__TTPHIEUNH__MaHan__4BAC3F29" ManuallyRouted="false" />
+        <AssociationConnector Association="DoAn1_WPFModel.FK__TTPHIEUXU__MAHAN__3C69FB99" ManuallyRouted="false" />
+        <AssociationConnector Association="DoAn1_WPFModel.FK__TTPHIEUXU__MANKH__3E52440B" ManuallyRouted="false" />
+        <AssociationConnector Association="DoAn1_WPFModel.FK__TTPHIEUNH__MaKho__4CA06362" ManuallyRouted="false" />
+        <AssociationConnector Association="DoAn1_WPFModel.FK__TTPHIEUXU__MAKHO__3D5E1FD2" ManuallyRouted="false" />
+        <AssociationConnector Association="DoAn1_WPFModel.FK__TTPHIEUNH__MaNCC__4D94879B" ManuallyRouted="false" />
+        <AssociationConnector Association="DoAn1_WPFModel.FK__TAIKHOAN__IdQuye__4AB81AF0" ManuallyRouted="false" />
+        <AssociationConnector Association="DoAn1_WPFModel.FK__TTPHIEUNHA__MaPN__4E88ABD4" ManuallyRouted="false" />
+        <AssociationConnector Association="DoAn1_WPFModel.FK_MAPX" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

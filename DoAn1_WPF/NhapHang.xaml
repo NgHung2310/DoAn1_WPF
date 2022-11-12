@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DoAn1_WPF"
         mc:Ignorable="d"
-        Title="Hàng hóa" Height="450" Width="800"
+        Title="Nhập hàng" Height="450" Width="1000"
         
         x:Name="window"
         xmlns:uc="clr-namespace:DoAn1_WPF.UserControlBar"
@@ -20,7 +20,7 @@
      TextOptions.TextRenderingMode="Auto"
      Background="{DynamicResource MaterialDesignPaper}"
      FontFamily="{DynamicResource MaterialDesignFont}"
-        DataContext="{StaticResource MainVM}"
+        DataContext="{StaticResource NhapHangVM}"
         >
     <Grid>
         <Grid.RowDefinitions>
@@ -40,12 +40,13 @@
             <!--binding từ selected item-->
             <materialDesign:Card Grid.Row="0" Margin="5">
                 <WrapPanel>
-                    <TextBox Text="{Binding HANGHOATenHang, UpdateSourceTrigger=PropertyChanged}" materialDesign:HintAssist.Hint="Tên hàng" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10 5 10 5"/>
-                    <ComboBox ItemsSource="{Binding NHACUNGCAPTenNCC}" SelectedItem="{Binding SelectedUnit,Mode=TwoWay}" materialDesign:HintAssist.Hint="Nhà cung cấp" IsEditable="True" Style="{StaticResource MaterialDesignFloatingHintComboBox}" Margin="10 5 10 5"></ComboBox>
-                    <TextBox Text="{Binding SLXuat, UpdateSourceTrigger=PropertyChanged}" materialDesign:HintAssist.Hint="Số lượng" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10 5 10 5"/>
-                    <TextBox Text="{Binding DGNhap, UpdateSourceTrigger=PropertyChanged}" materialDesign:HintAssist.Hint="Đơn giá" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10 5 10 5"/>
-                    <DatePicker SelectedDate="{Binding PHIEUNHAPNgayNhap}" materialDesign:HintAssist.Hint="Ngày nhập" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" Margin="10 5 10 5"/>
-                    <ComboBox ItemsSource="{Binding KHOHANGTenKho}" SelectedItem="{Binding SelectedUnit,Mode=TwoWay}" materialDesign:HintAssist.Hint="Kho hàng" IsEditable="True" Style="{StaticResource MaterialDesignFloatingHintComboBox}" Margin="10 5 10 5"></ComboBox>
+                    <DatePicker SelectedDate="{Binding NgayNhap}" materialDesign:HintAssist.Hint="Ngày nhập" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" Margin="10 5 10 5"/>
+                    <TextBox Text="{Binding MaPhieuNhap, UpdateSourceTrigger=PropertyChanged}" materialDesign:HintAssist.Hint="Mã phiếu nhập" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10 5 10 5"/>
+                    <ComboBox ItemsSource="{Binding HangHoa}" SelectedItem="{Binding SelectedHangHoa,Mode=TwoWay}" DisplayMemberPath="TenHang" SelectedValuePath="MaHang" materialDesign:HintAssist.Hint="Tên hàng" IsEditable="False" Style="{StaticResource MaterialDesignFloatingHintComboBox}" Margin="10 5 10 5"></ComboBox>
+                    <ComboBox ItemsSource="{Binding NhaCungCap}" SelectedItem="{Binding SelectedNhaCungCap,Mode=TwoWay}" DisplayMemberPath="TenNCC" SelectedValuePath="MaNCC" materialDesign:HintAssist.Hint="Nhà cung cấp" IsEditable="False" Style="{StaticResource MaterialDesignFloatingHintComboBox}" Margin="10 5 10 5"></ComboBox>
+                    <TextBox Text="{Binding SoLuong, UpdateSourceTrigger=PropertyChanged}" materialDesign:HintAssist.Hint="Số lượng" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10 5 10 5"/>
+                    <TextBox Text="{Binding DonGia, UpdateSourceTrigger=PropertyChanged}" materialDesign:HintAssist.Hint="Đơn giá" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10 5 10 5"/>
+                    <ComboBox ItemsSource="{Binding KhoHang}" SelectedItem="{Binding SelectedKhoHang,Mode=TwoWay}" DisplayMemberPath="TenKho" SelectedValuePath="MaKho" materialDesign:HintAssist.Hint="Kho hàng" IsEditable="False" Style="{StaticResource MaterialDesignFloatingHintComboBox}" Margin="10 5 10 5"></ComboBox>
                 </WrapPanel>
             </materialDesign:Card>
             <materialDesign:Card Grid.Row="1" Margin="5">
@@ -53,6 +54,9 @@
                     <Button Command="{Binding AddCommand}" Content="Thêm" Margin="5" Width="100"></Button>
                     <Button Command="{Binding EditCommand}" Content="Sửa" Margin="5" Width="100"></Button>
                     <Button Command="{Binding DeleteCommand}" Content="Xóa" Margin="5" Width="100"></Button>
+                    <Button Command="{Binding FindCommand}" Content="Tìm kiếm" Margin="200 5 5 5" Width="100"></Button>
+                    <Button Command="{Binding BackCommand}" Content="Quay lại" Margin="5" Width="100"></Button>
+                    <Button Command="{Binding ReportCommand}" Content="{materialDesign:PackIcon LocalPrintShop}" ToolTip="In thông tin phiếu theo mã phiếu" Margin="150 5 5 5"/>
                 </WrapPanel>
             </materialDesign:Card>
             <materialDesign:Card Grid.Row="2" Margin="5" VerticalAlignment="Stretch">
@@ -60,11 +64,12 @@
                     <ListView ItemsSource="{Binding List}" SelectedItem="{Binding SelectedItem, Mode=OneWayToSource}">
                         <ListView.View>
                             <GridView>
+                                <GridViewColumn Header="Ngày nhập" DisplayMemberBinding="{Binding PHIEUNHAP.NgayNhap,StringFormat='dd/MM/yyyy'}" ></GridViewColumn>
+                                <GridViewColumn Header="Mã PN" DisplayMemberBinding="{Binding PHIEUNHAP.MaPN}" ></GridViewColumn>
                                 <GridViewColumn Header="Tên hàng" DisplayMemberBinding="{Binding HANGHOA.TenHang}"></GridViewColumn>
                                 <GridViewColumn Header="Nhà cung cấp" DisplayMemberBinding="{Binding NHACUNGCAP.TenNCC}"></GridViewColumn>
                                 <GridViewColumn Header="Số lượng" DisplayMemberBinding="{Binding SLNhap}"></GridViewColumn>
                                 <GridViewColumn Header="Đơn giá" DisplayMemberBinding="{Binding DGNhap}"></GridViewColumn>
-                                <GridViewColumn Header="Ngày nhập" DisplayMemberBinding="{Binding PHIEUNHAP.NgayNhap}"></GridViewColumn>
                                 <GridViewColumn Header="Kho hàng" DisplayMemberBinding="{Binding KHOHANG.TenKho}"></GridViewColumn>
                             </GridView>
                         </ListView.View>

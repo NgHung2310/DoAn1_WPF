@@ -9,23 +9,19 @@
 
 namespace DoAn1_WPF.Model
 {
-    using DoAn1_WPF.ViewModel;
     using System;
     using System.Collections.Generic;
     
-    public partial class DANHMUCHANG : BaseViewModel
+    public partial class DANHMUCHANG
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public DANHMUCHANG()
         {
             this.HANGHOAs = new HashSet<HANGHOA>();
         }
-
-        private string maLoaiHang;
-        public string MaLoaiHang { get=>maLoaiHang; set { maLoaiHang = value;OnPropertyChanged(); } }
-
-        private string tenLoaiHang;
-        public string TenLoaiHang { get => tenLoaiHang; set { tenLoaiHang = value; OnPropertyChanged(); } }
+    
+        public string MaLoaiHang { get; set; }
+        public string TenLoaiHang { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<HANGHOA> HANGHOAs { get; set; }

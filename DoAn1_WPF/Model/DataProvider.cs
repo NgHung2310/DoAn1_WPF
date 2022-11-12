@@ -22,10 +22,10 @@ namespace DoAn1_WPF.Model
                 _isn = value;
             }
         }
-        public DoAn1_QLKEntities DB { get; set; }
+        public DoAn1_WPFEntities DB { get; set; }
         private DataProvider()
         {
-            DB = new DoAn1_QLKEntities();
+            DB = new DoAn1_WPFEntities();
         }
 
     }

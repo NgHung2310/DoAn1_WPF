@@ -14,7 +14,22 @@ namespace DoAn1_WPF.ViewModel
     {
         private ObservableCollection<TonKho> tonKhoList;
         public ObservableCollection<TonKho> TonKhoList { get => tonKhoList; set { tonKhoList = value; OnPropertyChanged(); } }
-        
+
+        private int slNhap;
+        public int SLNhap { get => slNhap; set { slNhap = value; OnPropertyChanged(); } }
+
+        private int slXuat;
+        public int SLXuat { get => slXuat; set { slXuat = value; OnPropertyChanged(); } }
+
+        private int slTon;
+        public int SLTon { get => slTon; set { slTon = value; OnPropertyChanged(); } }
+
+        private DateTime? dayStart;
+        public DateTime? DayStart { get => dayStart; set { dayStart = value; OnPropertyChanged(); } }
+        private DateTime? dayEnd;
+        public DateTime? DayEnd { get => dayEnd; set { dayEnd = value; OnPropertyChanged(); } }
+
+
         public bool IsLoaded { get; set; } = false;
         public ICommand LoadedWindowCommand { get; set; }
         public ICommand UnitCommand { get; set; }
@@ -25,6 +40,8 @@ namespace DoAn1_WPF.ViewModel
         public ICommand WarehouseCommand { get; set; }
         public ICommand InputCommand { get; set; }
         public ICommand OutputCommand { get; set; }
+        public ICommand FilterCommand { get; set; }
+
 
         public MainViewModel()
         {
@@ -100,13 +117,54 @@ namespace DoAn1_WPF.ViewModel
                 XuatHang wd = new XuatHang();
                 wd.ShowDialog();
             });
+
+            FilterCommand = new RelayCommand<object>((p) => { return true; }, (p) =>
+            {
+                TonKhoList = new ObservableCollection<TonKho>();
+                var objiectList = DataProvider.Isn.DB.HANGHOAs;
+                int i = 1;
+                SLNhap = SLXuat = SLTon = 0;
+                foreach (var item in objiectList)
+                {
+                    try
+                    {
+                        var inputList = DataProvider.Isn.DB.TTPHIEUNHAPs.Where(x => x.MaHang == item.MaHang && x.PHIEUNHAP.NgayNhap >= DayStart && x.PHIEUNHAP.NgayNhap <= DayEnd);
+                        var outputList = DataProvider.Isn.DB.TTPHIEUXUATs.Where(x => x.MaHang == item.MaHang && x.PHIEUXUAT.NgayXuat >= DayStart && x.PHIEUXUAT.NgayXuat <= DayEnd);
+                        int sumInput = 0;
+                        int sumOutput = 0;
+                        if (inputList != null && inputList.Count() > 0)
+                        {
+                            sumInput = (int)inputList.Sum(x => x.SLNhap);
+                        }
+                        if (outputList != null && outputList.Count() > 0)
+                        {
+                            sumOutput = (int)outputList.Sum(x => x.SLXuat);
+                        }
+                        TonKho tonKho = new TonKho();
+                        tonKho.STT = i;
+                        tonKho.SoLuong = sumInput - sumOutput;
+                        //if (tonKho.SoLuong < 0)
+                        //{
+                        //    tonKho.SoLuong = 0;
+                        //}
+                        tonKho.HangHoa = item;
+                        SLNhap += sumInput;
+                        SLXuat += sumOutput;
+                        TonKhoList.Add(tonKho);
+                        i++;
+                    }
+                    catch { }
+                }
+                SLTon = SLNhap - SLXuat;
+            });
         }
         
         void LoadTonKhoData()
         {
             TonKhoList = new ObservableCollection<TonKho>();
             var objiectList = DataProvider.Isn.DB.HANGHOAs;
-            int i = 1;            
+            int i = 1;
+            SLNhap = SLXuat = SLTon = 0;
             foreach (var item in objiectList)
             {
                 try 
@@ -115,25 +173,30 @@ namespace DoAn1_WPF.ViewModel
                     var outputList = DataProvider.Isn.DB.TTPHIEUXUATs.Where(x => x.MaHang == item.MaHang);
                     int sumInput = 0;
                     int sumOutput = 0;
-                    if (inputList != null)
+                    if (inputList != null && inputList.Count() > 0)
                     {
                         sumInput = (int)inputList.Sum(x => x.SLNhap);
                     }
-                    if (outputList != null)
+                    if (outputList != null && outputList.Count() > 0)
                     {
                         sumOutput = (int)outputList.Sum(x => x.SLXuat);
                     }
                     TonKho tonKho = new TonKho();
                     tonKho.STT = i;
                     tonKho.SoLuong = sumInput - sumOutput;
+                    if (tonKho.SoLuong < 0)
+                    {
+                        tonKho.SoLuong = 0;
+                    }
                     tonKho.HangHoa = item;
+                    SLNhap += sumInput;
+                    SLXuat += sumOutput;                    
                     TonKhoList.Add(tonKho);
                     i++;
                 }
                 catch { }
-                
             }
-
+            SLTon = SLNhap - SLXuat;
         }
     }
 }

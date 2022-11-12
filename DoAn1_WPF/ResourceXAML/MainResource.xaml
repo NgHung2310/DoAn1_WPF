@@ -4,5 +4,13 @@
     <viewmodel:MainViewModel x:Key="MainVM"></viewmodel:MainViewModel>
     <viewmodel:LoginViewModel x:Key="LoginVM"></viewmodel:LoginViewModel>
     <viewmodel:DanhMucHangViewModel x:Key="DanhMucHangVM"></viewmodel:DanhMucHangViewModel>
+    <viewmodel:NhaCungCapViewModel x:Key="NhaCungCapVM"></viewmodel:NhaCungCapViewModel>
+    <viewmodel:KhoHangViewModel x:Key="KhoHangVM"></viewmodel:KhoHangViewModel>
+    <viewmodel:KhachHangViewModel x:Key="KhachHangVM"></viewmodel:KhachHangViewModel>
+    <viewmodel:HangHoaViewModel x:Key="HangHoaVM"></viewmodel:HangHoaViewModel>
+    <viewmodel:NhapHangViewModel x:Key="NhapHangVM"></viewmodel:NhapHangViewModel>
+    <viewmodel:XuatHangViewModel x:Key="XuatHangVM"></viewmodel:XuatHangViewModel>
+    <viewmodel:NguoiDungViewModel x:Key="NguoiDungVM"></viewmodel:NguoiDungViewModel>
+    <viewmodel:DialogViewModel x:Key="DialogVM"></viewmodel:DialogViewModel>
 
 </ResourceDictionary>
