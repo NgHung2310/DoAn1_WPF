@@ -13,10 +13,10 @@ namespace DoAn1_WPF.Model
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class DoAn1_QLKEntities : DbContext
+    public partial class DoAn1_WPFEntities : DbContext
     {
-        public DoAn1_QLKEntities()
-            : base("name=DoAn1_QLKEntities")
+        public DoAn1_WPFEntities()
+            : base("name=DoAn1_WPFEntities")
         {
         }
     

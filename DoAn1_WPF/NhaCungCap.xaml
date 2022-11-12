@@ -20,7 +20,7 @@
      TextOptions.TextRenderingMode="Auto"
      Background="{DynamicResource MaterialDesignPaper}"
      FontFamily="{DynamicResource MaterialDesignFont}"
-        DataContext="{StaticResource MainVM}"
+        DataContext="{StaticResource NhaCungCapVM}"
        >
     <Grid>
         <Grid.RowDefinitions>
@@ -52,6 +52,8 @@
                     <Button Command="{Binding AddCommand}" Content="Thêm" Margin="5" Width="100"></Button>
                     <Button Command="{Binding EditCommand}" Content="Sửa" Margin="5" Width="100"></Button>
                     <Button Command="{Binding DeleteCommand}" Content="Xóa" Margin="5" Width="100"></Button>
+                    <Button Command="{Binding FindCommand}" Content="Tìm kiếm" Margin="200 5 5 5" Width="100"></Button>
+                    <Button Command="{Binding BackCommand}" Content="Quay lại" Margin="5" Width="100"></Button>
                 </WrapPanel>
             </materialDesign:Card>
             <materialDesign:Card Grid.Row="2" Margin="5" VerticalAlignment="Stretch">

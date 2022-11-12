@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="DoAn1_QLKModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="DoAn1_WPFModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="DANHMUCHANG">
           <Key>
             <PropertyRef Name="MaLoaiHang" />
@@ -62,14 +62,14 @@
             <PropertyRef Name="MaPN" />
           </Key>
           <Property Name="MaPN" Type="char" MaxLength="5" Nullable="false" />
-          <Property Name="NgayNhap" Type="datetime" />
+          <Property Name="NgayNhap" Type="date" />
         </EntityType>
         <EntityType Name="PHIEUXUAT">
           <Key>
             <PropertyRef Name="MaPX" />
           </Key>
           <Property Name="MaPX" Type="char" MaxLength="5" Nullable="false" />
-          <Property Name="NgayXuat" Type="datetime" />
+          <Property Name="NgayXuat" Type="date" />
         </EntityType>
         <EntityType Name="TAIKHOAN">
           <Key>
@@ -225,7 +225,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="DoAn1_QLKModelStoreContainer">
+        <EntityContainer Name="DoAn1_WPFModelStoreContainer">
           <EntitySet Name="DANHMUCHANG" EntityType="Self.DANHMUCHANG" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="HANGHOA" EntityType="Self.HANGHOA" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="KHACHHANG" EntityType="Self.KHACHHANG" Schema="dbo" store:Type="Tables" />
@@ -282,7 +282,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="DoAn1_QLKModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="DoAn1_WPFModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="DANHMUCHANG">
           <Key>
             <PropertyRef Name="MaLoaiHang" />
@@ -349,7 +349,7 @@
             <PropertyRef Name="MaPN" />
           </Key>
           <Property Name="MaPN" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="NgayNhap" Type="DateTime" Precision="3" />
+          <Property Name="NgayNhap" Type="DateTime" Precision="0" />
           <NavigationProperty Name="TTPHIEUNHAPs" Relationship="Self.FK__TTPHIEUNHA__MaPN__4E88ABD4" FromRole="PHIEUNHAP" ToRole="TTPHIEUNHAP" />
         </EntityType>
         <EntityType Name="PHIEUXUAT">
@@ -357,7 +357,7 @@
             <PropertyRef Name="MaPX" />
           </Key>
           <Property Name="MaPX" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="NgayXuat" Type="DateTime" Precision="3" />
+          <Property Name="NgayXuat" Type="DateTime" Precision="0" />
           <NavigationProperty Name="TTPHIEUXUATs" Relationship="Self.FK_MAPX" FromRole="PHIEUXUAT" ToRole="TTPHIEUXUAT" />
         </EntityType>
         <EntityType Name="TAIKHOAN">
@@ -523,7 +523,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="DoAn1_QLKEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="DoAn1_WPFEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="DANHMUCHANGs" EntityType="Self.DANHMUCHANG" />
           <EntitySet Name="HANGHOAs" EntityType="Self.HANGHOA" />
           <EntitySet Name="KHACHHANGs" EntityType="Self.KHACHHANG" />
@@ -581,9 +581,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="DoAn1_QLKModelStoreContainer" CdmEntityContainer="DoAn1_QLKEntities">
+        <EntityContainerMapping StorageEntityContainer="DoAn1_WPFModelStoreContainer" CdmEntityContainer="DoAn1_WPFEntities">
           <EntitySetMapping Name="DANHMUCHANGs">
-            <EntityTypeMapping TypeName="DoAn1_QLKModel.DANHMUCHANG">
+            <EntityTypeMapping TypeName="DoAn1_WPFModel.DANHMUCHANG">
               <MappingFragment StoreEntitySet="DANHMUCHANG">
                 <ScalarProperty Name="MaLoaiHang" ColumnName="MaLoaiHang" />
                 <ScalarProperty Name="TenLoaiHang" ColumnName="TenLoaiHang" />
@@ -591,7 +591,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="HANGHOAs">
-            <EntityTypeMapping TypeName="DoAn1_QLKModel.HANGHOA">
+            <EntityTypeMapping TypeName="DoAn1_WPFModel.HANGHOA">
               <MappingFragment StoreEntitySet="HANGHOA">
                 <ScalarProperty Name="MaHang" ColumnName="MaHang" />
                 <ScalarProperty Name="TenHang" ColumnName="TenHang" />
@@ -603,7 +603,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="KHACHHANGs">
-            <EntityTypeMapping TypeName="DoAn1_QLKModel.KHACHHANG">
+            <EntityTypeMapping TypeName="DoAn1_WPFModel.KHACHHANG">
               <MappingFragment StoreEntitySet="KHACHHANG">
                 <ScalarProperty Name="MaKH" ColumnName="MaKH" />
                 <ScalarProperty Name="HoTenKH" ColumnName="HoTenKH" />
@@ -613,7 +613,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="KHOHANGs">
-            <EntityTypeMapping TypeName="DoAn1_QLKModel.KHOHANG">
+            <EntityTypeMapping TypeName="DoAn1_WPFModel.KHOHANG">
               <MappingFragment StoreEntitySet="KHOHANG">
                 <ScalarProperty Name="MaKho" ColumnName="MaKho" />
                 <ScalarProperty Name="TenKho" ColumnName="TenKho" />
@@ -622,7 +622,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="NHACUNGCAPs">
-            <EntityTypeMapping TypeName="DoAn1_QLKModel.NHACUNGCAP">
+            <EntityTypeMapping TypeName="DoAn1_WPFModel.NHACUNGCAP">
               <MappingFragment StoreEntitySet="NHACUNGCAP">
                 <ScalarProperty Name="MaNCC" ColumnName="MaNCC" />
                 <ScalarProperty Name="TenNCC" ColumnName="TenNCC" />
@@ -633,7 +633,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="PHANQUYENs">
-            <EntityTypeMapping TypeName="DoAn1_QLKModel.PHANQUYEN">
+            <EntityTypeMapping TypeName="DoAn1_WPFModel.PHANQUYEN">
               <MappingFragment StoreEntitySet="PHANQUYEN">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Ten" ColumnName="Ten" />
@@ -641,7 +641,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="PHIEUNHAPs">
-            <EntityTypeMapping TypeName="DoAn1_QLKModel.PHIEUNHAP">
+            <EntityTypeMapping TypeName="DoAn1_WPFModel.PHIEUNHAP">
               <MappingFragment StoreEntitySet="PHIEUNHAP">
                 <ScalarProperty Name="MaPN" ColumnName="MaPN" />
                 <ScalarProperty Name="NgayNhap" ColumnName="NgayNhap" />
@@ -649,7 +649,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="PHIEUXUATs">
-            <EntityTypeMapping TypeName="DoAn1_QLKModel.PHIEUXUAT">
+            <EntityTypeMapping TypeName="DoAn1_WPFModel.PHIEUXUAT">
               <MappingFragment StoreEntitySet="PHIEUXUAT">
                 <ScalarProperty Name="MaPX" ColumnName="MaPX" />
                 <ScalarProperty Name="NgayXuat" ColumnName="NgayXuat" />
@@ -657,7 +657,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TAIKHOANs">
-            <EntityTypeMapping TypeName="DoAn1_QLKModel.TAIKHOAN">
+            <EntityTypeMapping TypeName="DoAn1_WPFModel.TAIKHOAN">
               <MappingFragment StoreEntitySet="TAIKHOAN">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Ten" ColumnName="Ten" />
@@ -668,7 +668,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TTPHIEUNHAPs">
-            <EntityTypeMapping TypeName="DoAn1_QLKModel.TTPHIEUNHAP">
+            <EntityTypeMapping TypeName="DoAn1_WPFModel.TTPHIEUNHAP">
               <MappingFragment StoreEntitySet="TTPHIEUNHAP">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="MaPN" ColumnName="MaPN" />
@@ -681,7 +681,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TTPHIEUXUATs">
-            <EntityTypeMapping TypeName="DoAn1_QLKModel.TTPHIEUXUAT">
+            <EntityTypeMapping TypeName="DoAn1_WPFModel.TTPHIEUXUAT">
               <MappingFragment StoreEntitySet="TTPHIEUXUAT">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="MaKH" ColumnName="MaKH" />

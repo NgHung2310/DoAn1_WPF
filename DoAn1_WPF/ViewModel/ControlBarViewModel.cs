@@ -25,7 +25,10 @@ namespace DoAn1_WPF.ViewModel
                 var w = window as Window;
                 if (w != null)
                 {
-                    w.Close();
+                    //if(MessageBox.Show("Sau khi thêm xóa sửa thông tin DANH MỤC, KHÁCH HÀNG, KHO HÀNG, NHÀ CUNG CẤP\nHãy chạy lại chương trình để hoạt động tốt hơn","Lưu ý!!",MessageBoxButton.YesNo,MessageBoxImage.Warning)== MessageBoxResult.Yes)                   
+                    //    Application.Current.Shutdown();
+                    //else
+                        w.Close();
                 }
             }
             );

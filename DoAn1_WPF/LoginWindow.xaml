@@ -19,10 +19,11 @@
         ResizeMode="NoResize"
         WindowStyle="None"
         WindowStartupLocation="CenterScreen"
-        
+    
         Name="loginWindow"
         DataContext="{StaticResource LoginVM}"       
-        Title="Đăng nhập" Height="450" Width="800">
+        Title="Đăng nhập" 
+        Height="450" Width="800">
     
     <Grid>
         <Grid.RowDefinitions>
@@ -30,7 +31,7 @@
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
         <Grid Grid.Row="0">
-            <uc:ControlBarQL></uc:ControlBarQL>
+            <uc:ControlBarQL Tag="{Binding Title, ElementName=loginWindow}"></uc:ControlBarQL>
         </Grid>
         <materialDesign:Card Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="360" Height="170">
             <Grid>
@@ -57,7 +58,7 @@
                                 Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" >
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="PasswordChanged">
-                                <i:InvokeCommandAction Command="{Binding PasswordChangedCommand}" CommandParameter="{Binding ElementName=mainWindow}"/>
+                                <i:InvokeCommandAction Command="{Binding PasswordChangedCommand}" CommandParameter="{Binding ElementName=FloatingPasswordBox}"/>
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
                     </PasswordBox>
@@ -73,7 +74,8 @@
                                 Width="120"                        
                                 ToolTip="Resource name: MaterialDesignRaisedLightDarkButton"
                                 Command="{Binding LoginCommand}"
-                                CommandParameter="{Binding ElementName=loginWindow}">
+                                CommandParameter="{Binding ElementName=loginWindow}"
+                                IsDefault="True">
                         </Button>
                     </Grid>
                     <Grid Grid.Column="1">
@@ -81,7 +83,9 @@
                                 Content="Thoát"
                                 Width="120"
                                 Background="Orchid"
-                                ToolTip="Resource name: MaterialDesignRaisedLightDarkButton">
+                                ToolTip="Resource name: MaterialDesignRaisedLightDarkButton"
+                                Command="{Binding CloseCommand}"
+                                CommandParameter="{Binding ElementName=loginWindow}">
                         </Button>
                     </Grid>
                 </Grid>

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DoAn1_WPF"
         mc:Ignorable="d"
-        Title="Hàng hóa" Height="450" Width="800"
+        Title="Kho hàng" Height="450" Width="800"
         
         x:Name="window"
         xmlns:uc="clr-namespace:DoAn1_WPF.UserControlBar"
@@ -20,7 +20,7 @@
      TextOptions.TextRenderingMode="Auto"
      Background="{DynamicResource MaterialDesignPaper}"
      FontFamily="{DynamicResource MaterialDesignFont}"
-        DataContext="{StaticResource MainVM}"
+        DataContext="{StaticResource KhoHangVM}"
         >
     <Grid>
         <Grid.RowDefinitions>
@@ -42,7 +42,7 @@
                 <WrapPanel>
                     <TextBox Text="{Binding MaKho, UpdateSourceTrigger=PropertyChanged}" materialDesign:HintAssist.Hint="Mã kho" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10 5 10 5"/>
                     <TextBox Text="{Binding TenKho, UpdateSourceTrigger=PropertyChanged}" materialDesign:HintAssist.Hint="Tên kho" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10 5 10 5"/>
-                    <TextBox Text="{Binding DiaChiKho, UpdateSourceTrigger=PropertyChanged}" materialDesign:HintAssist.Hint="Đơn vị tính" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10 5 10 5"/>
+                    <TextBox Text="{Binding DiaChiKho, UpdateSourceTrigger=PropertyChanged}" materialDesign:HintAssist.Hint="Địa chỉ" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10 5 10 5"/>
                 </WrapPanel>
             </materialDesign:Card>
             <materialDesign:Card Grid.Row="1" Margin="5">
@@ -50,7 +50,8 @@
                     <Button Command="{Binding AddCommand}" Content="Thêm" Margin="5" Width="100"></Button>
                     <Button Command="{Binding EditCommand}" Content="Sửa" Margin="5" Width="100"></Button>
                     <Button Command="{Binding DeleteCommand}" Content="Xóa" Margin="5" Width="100"></Button>
-                    <Button Command="{Binding InfoCommand}" Content="Thông tin" Margin="5" Width="100"></Button>
+                    <Button Command="{Binding FindCommand}" Content="Tìm kiếm" Margin="200 5 5 5" Width="100"></Button>
+                    <Button Command="{Binding BackCommand}" Content="Quay lại" Margin="5" Width="100"></Button>
                 </WrapPanel>
             </materialDesign:Card>
             <materialDesign:Card Grid.Row="2" Margin="5" VerticalAlignment="Stretch">

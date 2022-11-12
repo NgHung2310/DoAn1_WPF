@@ -20,7 +20,7 @@
      TextOptions.TextRenderingMode="Auto"
      Background="{DynamicResource MaterialDesignPaper}"
      FontFamily="{DynamicResource MaterialDesignFont}"
-        DataContext="{StaticResource MainVM}"
+        DataContext="{StaticResource HangHoaVM}"
         >
     <Grid>
         <Grid.RowDefinitions>
@@ -45,7 +45,7 @@
                     <TextBox Text="{Binding DonViTinh, UpdateSourceTrigger=PropertyChanged}" materialDesign:HintAssist.Hint="Đơn vị tính" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10 5 10 5"/>
                     <TextBox Text="{Binding SoLuong, UpdateSourceTrigger=PropertyChanged}" materialDesign:HintAssist.Hint="Số lượng" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10 5 10 5"/>
                     <TextBox Text="{Binding DonGia, UpdateSourceTrigger=PropertyChanged}" materialDesign:HintAssist.Hint="Đơn giá" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10 5 10 5"/>
-                    <ComboBox ItemsSource="{Binding DANHMUCHANG.TenLoaiHang}" SelectedItem="{Binding SelectedUnit,Mode=TwoWay}" materialDesign:HintAssist.Hint="Loại hàng" IsEditable="True" Style="{StaticResource MaterialDesignFloatingHintComboBox}" Margin="10 5 10 5"></ComboBox>
+                    <ComboBox ItemsSource="{Binding DanhMucHang}" DisplayMemberPath="TenLoaiHang" SelectedValuePath="MaLoaiHang" SelectedItem="{Binding SelectedDanhMucHang,Mode=TwoWay}" materialDesign:HintAssist.Hint="Loại hàng" IsEditable="False" Style="{StaticResource MaterialDesignFloatingHintComboBox}" Margin="10 5 10 5"></ComboBox>
                 </WrapPanel>
             </materialDesign:Card>
             <materialDesign:Card Grid.Row="1" Margin="5">
@@ -53,6 +53,8 @@
                     <Button Command="{Binding AddCommand}" Content="Thêm" Margin="5" Width="100"></Button>
                     <Button Command="{Binding EditCommand}" Content="Sửa" Margin="5" Width="100"></Button>
                     <Button Command="{Binding DeleteCommand}" Content="Xóa" Margin="5" Width="100"></Button>
+                    <Button Command="{Binding FindCommand}" Content="Tìm kiếm" Margin="200 5 5 5" Width="100"></Button>
+                    <Button Command="{Binding BackCommand}" Content="Quay lại" Margin="5" Width="100"></Button>
                 </WrapPanel>
             </materialDesign:Card>
             <materialDesign:Card Grid.Row="2" Margin="5" VerticalAlignment="Stretch">

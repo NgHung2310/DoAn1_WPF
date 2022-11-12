@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DoAn1_WPF"
         mc:Ignorable="d"
-        Title="Hàng hóa" Height="450" Width="800"
+        Title="Người dùng" Height="450" Width="800"
         
         x:Name="window"
         xmlns:uc="clr-namespace:DoAn1_WPF.UserControlBar"
@@ -20,7 +20,7 @@
      TextOptions.TextRenderingMode="Auto"
      Background="{DynamicResource MaterialDesignPaper}"
      FontFamily="{DynamicResource MaterialDesignFont}"
-        DataContext="{StaticResource MainVM}"
+        DataContext="{StaticResource NguoiDungVM}"
         >
     <Grid>
         <Grid.RowDefinitions>
@@ -40,8 +40,8 @@
             <!--binding từ selected item-->
             <materialDesign:Card Grid.Row="0" Margin="5">
                 <WrapPanel>
-                    <TextBox Text="{Binding TaiKhoan, UpdateSourceTrigger=PropertyChanged}" materialDesign:HintAssist.Hint="Tên đăng nhập" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10 5 10 5"/>
-                    <ComboBox ItemsSource="{Binding Quyen}" SelectedItem="{Binding SelectedQuyen,Mode=TwoWay}" materialDesign:HintAssist.Hint="Quyền" IsEditable="True" Style="{StaticResource MaterialDesignFloatingHintComboBox}" Margin="10 5 10 5"></ComboBox>
+                    <TextBox Text="{Binding TenDangNhap, UpdateSourceTrigger=PropertyChanged}" materialDesign:HintAssist.Hint="Tên đăng nhập" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10 5 10 5"/>
+                    <ComboBox ItemsSource="{Binding ChucVu}" SelectedItem="{Binding SelectedChucVu,Mode=TwoWay}" DisplayMemberPath="Ten" SelectedValuePath="ID" materialDesign:HintAssist.Hint="Chức vụ" IsEditable="True" Style="{StaticResource MaterialDesignFloatingHintComboBox}" Margin="10 5 10 5"></ComboBox>
                     <TextBox Text="{Binding Ten, UpdateSourceTrigger=PropertyChanged}" materialDesign:HintAssist.Hint="Tên hiển thị" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10 5 10 5"/>
                 </WrapPanel>
             </materialDesign:Card>
@@ -50,7 +50,7 @@
                     <Button Command="{Binding AddCommand}" Content="Thêm" Margin="5" Width="100"></Button>
                     <Button Command="{Binding EditCommand}" Content="Sửa" Margin="5" Width="100"></Button>
                     <Button Command="{Binding DeleteCommand}" Content="Xóa" Margin="5" Width="100"></Button>
-                    <Button Command="{Binding ChangePasswordCommand}" Content="Đổi mật khẩu" Margin="5" Width="auto"></Button>
+                    <Button Command="{Binding ChangePasswordCommand}" Content="Đổi mật khẩu" Margin="200 5 5 5" Width="auto"></Button>
                 </WrapPanel>
             </materialDesign:Card>
             <materialDesign:Card Grid.Row="2" Margin="5" VerticalAlignment="Stretch">
@@ -59,8 +59,8 @@
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header="ID" DisplayMemberBinding="{Binding ID}"></GridViewColumn>
-                                <GridViewColumn Header="Tên đăng nhập" DisplayMemberBinding="{Binding TaiKhoan}"></GridViewColumn>
-                                <GridViewColumn Header="Chức vụ" DisplayMemberBinding="{Binding Quyen}"></GridViewColumn>
+                                <GridViewColumn Header="Tên đăng nhập" DisplayMemberBinding="{Binding TaiKhoan1}"></GridViewColumn>
+                                <GridViewColumn Header="Chức vụ" DisplayMemberBinding="{Binding PHANQUYEN.Ten}"></GridViewColumn>
                                 <GridViewColumn Header="Tên hiển thị" DisplayMemberBinding="{Binding Ten}"></GridViewColumn>
                             </GridView>
                         </ListView.View>
